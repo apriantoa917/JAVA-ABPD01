@@ -9,7 +9,7 @@ package p3;
  *
  * @author ROG STRIX
  */
-public class perulangan_while {
+public class perulangan_doWhile {
 
     /**
      * @param args the command line arguments
@@ -17,14 +17,13 @@ public class perulangan_while {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        
-        // kondisi akan di cek dahulu sebelum menjalankan kode
+        // perbedaan dg while : di do while, kode akan dijalankan dahulu, lalu cek kondisi
         
         int awal = 1;
-        while(awal <=3){
+        do {            
             System.out.println(awal);
             awal++;
-        }
+        } while (awal <= 5);
     }
     
 }

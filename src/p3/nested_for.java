@@ -9,22 +9,19 @@ package p3;
  *
  * @author ROG STRIX
  */
-public class perulangan_while {
+public class nested_for {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        
-        // kondisi akan di cek dahulu sebelum menjalankan kode
-        
-        int awal = 1;
-        while(awal <=3){
-            System.out.println(awal);
-            awal++;
+        for (int i = 1; i <= 3; i++) { // perulangan untuk baris (menurun)
+            for (int j = 1; j <= 3; j++) { // perulangan untuk kolom (mendatar)
+                System.out.print(" * ");
+            }
+            System.out.println("");
         }
     }
-    
+
 }
