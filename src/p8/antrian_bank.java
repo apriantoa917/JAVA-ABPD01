@@ -8,6 +8,7 @@ package p8;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -22,12 +23,11 @@ public class antrian_bank {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        
+
         // objek = class yang diimpor ke dalam class lain,
         // model = impor variabel no,nama, keluhan ke dalam main class untuk menampung data sementara
         // data yang masuk ke queue bukan lagi per variabel, melainkan sudah dibungkus menjadi 1 class (menampung variabel no, nama, keluhan)
         // jadi ketika ingin menambah/ mengeluarkan harus melalui class model
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         Queue<model> antrian = new LinkedList<>(); // kita pakai 1 queue dengan class (bisa menampung berbagai variabel yang berbeda tipe data)
@@ -41,9 +41,9 @@ public class antrian_bank {
 
             model m = new model(); // memanggil class sebagai objek
             m.setNo(Integer.toString(no_urut)); // mengisi variabel no di class model dengan nomor urut (otomatis bertambah)
-            no_urut += 1; // menambah no urut
 
             System.out.println("\nAntrian no." + no_urut);
+            no_urut += 1; // menambah no urut
 
             System.out.print("\nNama : "); // meminta input nama
             m.setNama(br.readLine()); // menampung isi variabel nama di class model dengan inputan nama
@@ -70,9 +70,8 @@ public class antrian_bank {
             String no = m.getNo(); // mengisi data nomor dengan model yang menampung data paling awal (yang di poll)
             String nama = m.getNama();
             String keluhan = m.getKeluhan();
-            
-            System.out.println("\nNo. " + no + "\n-------------\nNama : " + nama + "\nKeluhan : " + keluhan + "\nsisa antrian : " + antrian.size() + "\norang dalam antrian : " + "\n"); // mengeluarkan data
-            
+            System.out.println("\nNo. " + no + "\n-------------\nNama : " + nama + "\nKeluhan : " + keluhan + "\nsisa antrian : " + antrian.size() + ", " + getSisaAntrian(antrian) + "\n"); // mengeluarkan data
+
             if (antrian.isEmpty()) { // jika setelah di poll, data queue sudah kosong, maka :
                 pelayanan = false; //berhenti
             } else {
@@ -85,6 +84,20 @@ public class antrian_bank {
                 }
             }
         }
+    }
+
+    public static String getSisaAntrian(Queue<model> sisa_antrian) { // mengambil nama yang sedang dalam antrian (object tidak dapat mengeluarkan nama langsung, harus dikeluarkan manual), parameter = queue yang sisa
+        String sisa = "[";
+        ArrayList<model> list = new ArrayList<>(sisa_antrian); // deklarasi arraylist dengan isi dari queue
+        if (list.size() <= 0) {
+            sisa += "tidak ada orang dalam antrian ]";
+        } else {
+            for (int i = 0; i < list.size(); i++) {
+                sisa += list.get(i).getNama() + ", ";
+            }
+            sisa += "]";
+        }
+        return sisa;
     }
 
 }
