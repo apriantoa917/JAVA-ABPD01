@@ -93,7 +93,12 @@ public class antrian_bank {
             sisa += "tidak ada orang dalam antrian ]";
         } else {
             for (int i = 0; i < list.size(); i++) {
-                sisa += list.get(i).getNama() + ", ";
+                if(i == list.size()-1){ // jika sudah di akhir tidak pakai koma lagi (aaa,zzz)
+                    sisa += list.get(i).getNama();
+                }else{ // beri pemisah koma untuk nama selanjutnya (aaa,bbb,...)
+                    sisa += list.get(i).getNama() + ", "; 
+                }
+                
             }
             sisa += "]";
         }
