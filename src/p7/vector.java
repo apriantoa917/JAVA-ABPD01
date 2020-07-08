@@ -38,7 +38,7 @@ public class vector {
 
         // menghapus data pada vector
         data.remove(0); // menghapus index ke 0 ("A"), index ke 0 jadi "B"
-
+        
         System.out.println("===============");
         for (int i = 0; i < data.size(); i++) {
             System.out.println(data.get(i));

@@ -17,7 +17,7 @@ public class quiz2 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Sistem  persamaan liniar 1 variabel");
+        System.out.println("Sistem  persamaan liniar 1 variabel (contoh : 2x + 1 = 100 atau 100 = 8 + 4x");
         while (true) {
             tanya_soal();
         }
